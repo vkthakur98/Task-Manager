@@ -17,7 +17,7 @@ const App = () => {
         const token = await getToken(messaging,
           {vapidKey:
           "BLucLK0nUCqnLNaDUs9JJPMqtif7wuHAIBaNnHHaI1MRLVODrk9e7jiZjhkXudaFT9OhVh7T9BEorDaQwK7G6P0"})
-        alert("token generated:",token)
+        alert(token)
       }
       else if(permission === "denied"){
         alert("You denied notification permission")
