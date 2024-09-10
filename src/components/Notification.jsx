@@ -1,16 +1,13 @@
 import React from 'react'
 
-const Notification = () => {
+const Notification = (props) => {
+  const display = props.show?"block":"hidden"
   return (
-    <div>
-        <div className='p-4 font-sans text-[15px] bg-green-400'>
-            Notification
-        </div>
-        <div className='p-4 h-[100px] font-sans text-[15px] bg-red-500'>
-            Your notification message
-        </div>
-    </div>
+      <div className={` ${display} p-4 font-sans text-[15px] bg-[#65C7AF] font-bold text-white animate-fade-up mt-[-100px] rounded-md`}>
+      {props.msg}
+      </div>  
   )
 }
 
 export default Notification
+
