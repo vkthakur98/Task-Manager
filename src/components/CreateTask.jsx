@@ -11,6 +11,8 @@ const CreateTask = () => {
   const [StartTime,setStartTime] = useState("")
   const [EndTime,setEndTime] = useState("")
   const [n_state,setNstate] = useState(false)
+  const [n_msg,setNmsg] = useState("")
+  const [bg_color,setBgcolor] = useState("")
   const dispatch = useDispatch()
   let Tasks = [];
   let TaskData = localStorage.getItem("Tasks")
@@ -24,9 +26,11 @@ const CreateTask = () => {
   const saveTask = ()=>{
       dispatch(addTask({Title,Date,Description,StartTime,EndTime}))
       setNstate(true)
+      setBgcolor("#2FB390")
+      setNmsg("Your task added successfully")
       setTimeout(()=>{
         setNstate(false)
-      },5000)      
+      },5000)
   }
   return (
     <>
@@ -56,7 +60,7 @@ const CreateTask = () => {
       <p className='text-[20px] font-bold ] mt-4'>Description</p>
       <textarea  onChange={(e)=>{setDescription(e.target.value)}}  className='p-4 rounded-[20px] border w-[90vw] border-gray-200 mt-4' placeholder='type some description about this particular task'></textarea>
       <button onClick={()=>{saveTask()}} className='p-3 w-[90vw] rounded-[30px] bg-blue-500 text-white text-[20px]'>Create Task</button>
-    <Notification msg={"Your task added successfully"} show={n_state}></Notification>
+      <Notification msg={n_msg} bgcolor={bg_color} show={n_state}></Notification>
       </div>
     </div>
     </>  
