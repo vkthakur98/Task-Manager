@@ -26,7 +26,7 @@ const CreateTask = () => {
       setNstate(true)
       setTimeout(()=>{
         setNstate(false)
-      },3000)      
+      },5000)      
   }
   return (
     <>
