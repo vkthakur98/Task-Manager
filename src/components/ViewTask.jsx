@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import {  useNavigate, useLocation, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { removeTask,markCompleted } from '../features/tasks/taskSlice'
-
+import Pop from './Pop'
+import Notification from "./Notification"
 
 const ViewTask = () => {
     useEffect(()=>{
@@ -16,9 +17,27 @@ const ViewTask = () => {
     const { state } = useLocation()
     const [markBtnText,setMarkBtnText] = useState("fa-check")
     const [btnDisplay,setBtnDisplay] = useState("flex")
+    const [display,setDisplay] = useState("hidden")
+    const [n_state,setNstate] = useState(false)
     let current_task = new Object()
     let taskid = state.taskid
     console.log(taskid)
+
+    const confirmData = (status) => {
+        if(status)
+        {
+            dispatch(removeTask({taskid}))
+            setDisplay("hidden")
+            setNstate(true)
+            setTimeout(()=>{
+                setNstate(false)
+            },5000)
+        }
+        else{
+            setDisplay("hidden")
+        }
+      }
+
     const tasks = JSON.parse(localStorage.getItem("Tasks"))
     tasks.forEach(task => {
         if(task.taskID === state.taskid)
@@ -33,7 +52,7 @@ const ViewTask = () => {
     }
 
     const deleteTask = ()=>{
-        dispatch(removeTask({taskid}))
+            setDisplay("flex")
      }
 
      let date_day = new Date(current_task.date)
@@ -68,6 +87,8 @@ const ViewTask = () => {
     <button onClick={()=>{deleteTask()}} className= 'w-[100px] p-2 rounded-[10px] bg-red-500 text-white text-[20px] mt-3'><i className='fa fa-trash'></i></button> 
     </div>
     </div>
+    <Pop display={display} check={confirmData} ></Pop>
+    <Notification msg={"Deleted successfully"} type={"Success"} show={n_state}></Notification>
     </>
 )
 }

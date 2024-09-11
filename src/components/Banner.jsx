@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 const Banner = () => {
-  const tasks = JSON.parse(localStorage.getItem("Tasks"))
+  const tasks = useSelector(state=>state.tasks)
   const completed_tasks = tasks.filter((task)=>task.completed===true)
   let completed_percentage = 0;
   if(completed_tasks.length==0)
   completed_percentage = 0
   completed_percentage = Math.ceil((completed_tasks.length/tasks.length)*100)
-  const [percent,setPercent] = useState(completed_percentage)
+  const [percent,setPercent] = useState(`w-[${completed_percentage}%]`)
   useEffect(()=>{
-    setPercent(completed_percentage)
+    setPercent(`w-[${completed_percentage}%]`)
   },[completed_tasks])
 
   return (
@@ -22,7 +23,7 @@ const Banner = () => {
      <span>Progress</span><span>{`${completed_percentage}%`}</span>   
     </div>
     <div className='h-2 w-[100%] bg-[#b4b4e1] rounded-md mt-2'>
-        <div className={`h-2 w-[${percent}%] bg-white rounded-md`}>
+        <div className={`h-2 ${percent}  bg-white rounded-md`}>
     </div>
     </div>   
     </div>
