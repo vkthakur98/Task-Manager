@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Task = (props) => {
+const Task = (props) => {<i class="fa-solid "></i>
   const date = new Date()
-  let i_class = props.task.completed?"fa-check-circle text-green-500":"fa-angle-right text-gray-500";  
+  let i_class = props.task.completed?"fa-check-circle text-green-500":"fa-hourglass-start text-gray-500";  
   return (
     <>
     <div className='flex justify-between align-middle p-4 rounded-md bg-white'>
