@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { json, useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { updateTask } from '../features/tasks/taskSlice'
+import Notification from "./Notification"
 
 const CreateTask = () => {
   const dispatch = useDispatch()
@@ -13,6 +14,7 @@ const CreateTask = () => {
   const [Description,setDescription] = useState(state.task_data.description)
   const [StartTime,setStartTime] = useState(state.task_data.start_time)
   const [EndTime,setEndTime] = useState(state.task_data.end_time)
+  const [n_state,setNstate] = useState(false)
   let Tasks = [];
   let TaskData = localStorage.getItem("Tasks")
   if(!TaskData)
@@ -24,6 +26,10 @@ const CreateTask = () => {
     }         
   const saveTask = ()=>{ 
     dispatch(updateTask({taskid,Title,Description,Date,StartTime,EndTime}))
+    setNstate(true)
+    setTimeout(()=>{
+      setNstate(false)
+    },5000)
   }
   return (
     <>
@@ -53,6 +59,7 @@ const CreateTask = () => {
       <p className='text-[20px] font-bold ] mt-4'>Description</p>
       <textarea  onChange={(e)=>{setDescription(e.target.value)}}  className='p-4 rounded-[20px] border w-[90vw] border-gray-200 mt-4' placeholder='type some description about this particular task' value={Description}></textarea>
       <button onClick={()=>{saveTask()}} className='p-3 w-[90vw] rounded-[30px] bg-blue-500 text-white text-[20px]'>Update Task</button>
+      <Notification msg={"Updated Successfully"} type={"success"} show={n_state}></Notification>
       </div>
     </div>
     </>
