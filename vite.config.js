@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
-        name: 'Task Manager',
-        short_name: 'Task Manager',
+        name: 'Task Managerssss',
+        short_name: 'Task Managerssss',
         theme_color: 'red',
         icons: [
             {
