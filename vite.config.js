@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         name: 'Task Manager',
         short_name: 'Task Manager',
-        theme_color: '#ffffff',
+        theme_color: '#262626',
         icons: [
             {
                 src: 'pwa-64x64.png',

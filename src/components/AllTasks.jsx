@@ -48,7 +48,7 @@ return (
     <div className='pl-5 pr-5 pt-4 pb-1'>
         <span className='font-bold text-[20px] text-white'>Today's Task</span>
     </div>
-    <div className='p-1 h-[350px] overflow-scroll'>
+    <div className='p-1 h-[360px] overflow-scroll'>
         {
             tasks.map((task,key)=>{
                 return<Link to="/view-task" key={key} state={{taskid:task.taskID}} ><Task task={
