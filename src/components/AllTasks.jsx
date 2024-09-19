@@ -4,8 +4,8 @@ import { Link} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const AllTasks = () => {
- const tasks = useSelector(state=>state.tasks)
-  console.log("is this array",tasks)
+const tasks = useSelector(state=>state.tasks)
+console.log("is this array",tasks)
 const today = new Date()
 let c_date = "0";
 let c_month = "0";
@@ -31,11 +31,22 @@ else{
 const t_date = today.getFullYear()+"-0"+(today.getMonth()+1)+"-"+ c_date
 console.log(t_date)
 
+//comparing the dates to show the completed or not completed//
+tasks.forEach((task)=>{
+  if(task.date !== t_date)
+  {
+    //do nothing
+  }
+    else{
+        task.completed = false
+        localStorage.setItem("Tasks",tasks)
+    } 
+})
 
-  return (
+return (
     <>
     <div className='pl-5 pr-5 pt-4 pb-1'>
-        <span className='font-bold text-[20px]'>Today's Task</span>
+        <span className='font-bold text-[20px] text-white'>Today's Task</span>
     </div>
     <div className='p-1 h-[350px] overflow-scroll'>
         {

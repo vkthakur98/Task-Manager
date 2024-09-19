@@ -33,7 +33,8 @@ const App = () => {
     window.location.reload()
   }
   return (
-    <> 
+    <>
+    <div className="bg-[#1d1c1c]"> 
       <BrowserRouter>
           <Routes>
             <Route path='/'   element={<HeasderTasks/>} >
@@ -45,7 +46,8 @@ const App = () => {
             <Route path='/update-task'   element={<UpdateTask/>} >
             </Route>
           </Routes>
-        </BrowserRouter>      
+        </BrowserRouter>     
+        </div> 
     </>
   );
 };

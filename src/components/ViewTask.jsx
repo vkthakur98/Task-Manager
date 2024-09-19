@@ -61,20 +61,22 @@ const ViewTask = () => {
 
   return (
     <>
+    <div className='h-[100vh]'>
     <div className='p-4 flex justify-between align-middle font-sans text-[20px]'>
-        <i className="fa fa-angle-left bg-gray-200 flex justify-center align-middle p-3 rounded-md text-gray-500" onClick={()=>navigate(-1)}></i>
-        <h2 className='font-bold'>Task Details</h2>
+        <i className="fa fa-angle-left bg-[#262626] flex justify-center align-middle p-3 rounded-md text-gray-500" onClick={()=>navigate(-1)}></i>
+        <h2 className='font-bold text-white'>Task Details</h2>
         <span></span>        
     </div>
     <div className='p-4 font-sans text-[25px] font-bold'>
-        <h1>{current_task.title}</h1>
+        <h1 className='text-white'>{current_task.title}</h1>
     </div>
     <div className='p-4 flex justify-start align-middle'>
-        <div className='flex justify-center bg-gray-200 rounded-[50%] w-[50px] p-3'><i className='fa fa-calendar text-blue-400 text-[25px]'></i></div><div><span className='text-gray-400 text-[20px] ml-3 text-center'>{`On ${date_day} at ${current_task.start_time}`}</span></div>
+        <div className='flex justify-center bg-[#262626] rounded-[50%] w-[50px] p-3'><i className='fa fa-calendar text-blue-400 text-[25px]'></i></div><div><span className='text-gray-400 text-[20px] ml-3 text-center'>{`On ${date_day} at ${current_task.start_time}`}</span></div>
     </div>
+    
     <div className=''>
-        <div className='pt-2 pl-4 pr-4 pb-2 text-[20px] font-bold'><h1>Overview</h1></div>
-        <div className='pl-4 pr-4 text-[17px]  text-gray-600'>
+        <div className='pt-2 pl-4 pr-4 pb-2 text-[20px] font-bold text-white'><h1>Overview</h1></div>
+        <div className='pl-4 pr-4 text-[17px]  text-gray-200'>
             {current_task.description}
         </div>
     </div>
@@ -89,6 +91,7 @@ const ViewTask = () => {
     </div>
     <Pop display={display} check={confirmData} ></Pop>
     <Notification msg={"Deleted successfully"} type={"Success"} show={n_state}></Notification>
+    </div>
     </>
 )
 }

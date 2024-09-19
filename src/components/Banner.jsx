@@ -16,7 +16,7 @@ const Banner = () => {
   return (
     <>
     <div className='flex justify-center align-middle font-sans'><br></br>
-    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 h-[150px] w-[92vw] rounded-md p-5">
+    <div className="bg-gradient-to-r from-[#03396c] to-[#005b96] h-[150px] w-[92vw] rounded-md p-5">
     <h1 className='text-[20px] text-white font-bold'>Today's progress summary</h1>
     <span className='text-white'>{`${tasks.length} tasks`}</span>
     <div className='flex justify-between align-middle mt-2 text-white'>
